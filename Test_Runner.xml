@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Suite1" verbose="1">
+    <test name="automation_test">
+        <classes>
+            <class name="tests.register_tests"/>
+            <class name="tests.login_tests"/>
+            <class name="tests.account_tests"/>
+            <class name="tests.cart_tests"/>
+            <class name="tests.checkout_tests"/>
+            <class name="tests.product_tests"/>
+            <class name="tests.search_tests"/>
+            <class name="tests.category_tests"/>
+
+        </classes>
+    </test>
+</suite>
