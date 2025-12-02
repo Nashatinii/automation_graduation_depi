@@ -18,7 +18,7 @@ public class SearchPage {
     By searchResults = By.xpath("//div[contains(@class, 'product-thumb')]");
     By productName = By.xpath(".//h4/a");
     By productPrice = By.xpath(".//span[contains(@class, 'price-new')] | .//span[contains(@class, 'price')]");
-    By addToCartButton = By.xpath(".//button[contains(@onclick, 'cart.add')]");
+    By addToCartButton = By.xpath("//button[@title='Add to Cart']]");
     By addToWishlistButton = By.xpath(".//button[contains(@onclick, 'wishlist.add')]");
     By noResultsMessage = By.xpath("//p[contains(text(), 'No products')]");
     By productImage = By.xpath(".//img");
@@ -59,6 +59,26 @@ public class SearchPage {
             addToCart.click();
         }
     }
+
+
+    // 3. Add product to cart by product name
+    public void addProductToCartByName(String name) {
+        List<WebElement> results = driver.findElements(searchResults);
+
+        for (WebElement product : results) {
+            String currentName = product.findElement(productName).getText();
+
+            if (currentName.equalsIgnoreCase(name)) {
+                WebElement addBtn = product.findElement(addToCartButton);
+                wait.until(ExpectedConditions.elementToBeClickable(addBtn));
+                addBtn.click();
+                return;
+            }
+        }
+
+        throw new RuntimeException("Product not found: " + name);
+    }
+
 
     public void addProductToCartByIndex(int index) {
         List<WebElement> results = getSearchResults();
@@ -104,6 +124,7 @@ public class SearchPage {
         }
     }
 }
+
 
 
 
