@@ -12,6 +12,13 @@ public class cart_tests extends test_base {
         cart.openCartPage();
         cart.Assertion_product_exists_in_cart();}
 
+  @Test
+    public void add_simple_product_by_id() {
+      addProductToCartById("40");
+        cart.openCartPage();
+        cart.Assertion_product_exists_in_cart();}
+
+
     @Test
     public void add_option_product_and_verify_it_appears_in_cart() {
         open_optprod_page();

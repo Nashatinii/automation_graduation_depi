@@ -79,6 +79,10 @@ public class test_base {
         account.open_hmpage();
         home.open_optprod_page();}
     protected void clear_cartbage(){
-
+cart.removeAllProducts();
+    }
+    protected void addProductToCartById(String productId) {
+        driver.get("http://localhost/opencartproject/index.php?route=product/product&language=en-gb&product_id=" + productId);
+        sim_prod.addToCart();
     }
 }
